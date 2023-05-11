@@ -1,0 +1,40 @@
+{
+    "builders": [{
+      "type": "azure-arm",
+  
+      "client_id": "3b0e264a-8a5c-4753-80a1-3cab4aa7578c",
+      "client_secret": "PNN8Q~RYGVmvYKdMe3CzVCIeLxf8khji-xe.ga-A",
+      "tenant_id": "fcd0be7c-4ee7-47c4-9299-288e7477e4ef",
+      "subscription_id": "207eb854-a22d-4398-b63e-f09452a3eb64",
+  
+      "managed_image_resource_group_name": "myResourceGroup",
+      "managed_image_name": "myAZPackerImage",
+  
+      "os_type": "Linux",
+      "image_publisher": "Canonical",
+      "image_offer": "UbuntuServer",
+      "image_sku": "19_10-daily-gen2",
+  
+      "azure_tags": {
+          "dept": "DevOps",
+          "task": "Image deployment"
+      },
+  
+      "location": "West Europe",
+      "vm_size": "Standard_B2s"
+    }],
+    "provisioners": [{
+      "execute_command": "chmod +x {{ .Path }}; {{ .Vars }} sudo -E sh '{{ .Path }}'",
+      "inline": [
+        "apt-get update",
+        "apt-get upgrade -y",
+        "apt-get -y install nginx",
+        "apt-get -y install git",
+  
+        "cd /var/www && git clone https://github.com/brikis98/terraform-up-and-running-code.git",
+        "/usr/sbin/waagent -force -deprovision+user && export HISTSIZE=0 && sync"
+      ],
+      "inline_shebang": "/bin/sh -x",
+      "type": "shell"
+    }]
+  }

@@ -18,3 +18,6 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+
+# Ignore azurerm provider binary
+**/terraform-provider-azurerm*

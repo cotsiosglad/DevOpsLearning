@@ -1,0 +1,36 @@
+---
+- name: Verify Kubernetes Cluster Setup
+  hosts: dev
+  gather_facts: false
+  become: true
+  tasks:
+    - name: Check if Docker is installed
+      assert:
+        that:
+          - "'docker' in ansible_facts.packages"
+        fail_msg: "Docker is not installed."
+        success_msg: "Docker is installed."
+
+    - name: Check if Docker service is running
+      assert:
+        that:
+          - ansible_facts.services['docker'].state == 'running'
+        fail_msg: "Docker service is not running."
+        success_msg: "Docker service is running."
+
+    - name: Check if kubelet service is enabled
+      assert:
+        that:
+          - ansible_facts.services['kubelet'].enabled
+        fail_msg: "kubelet service is not enabled."
+        success_msg: "kubelet service is enabled."
+
+    - name: Check if kubectl is installed on master
+      assert:
+        that:
+          - "'kubectl' in ansible_facts.packages"
+        fail_msg: "kubectl is not installed."
+        success_msg: "kubectl is installed."
+      when: ansible_host in groups['master']
+
+

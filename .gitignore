@@ -21,3 +21,9 @@ terraform.rc
 
 # Ignore azurerm provider binary
 **/terraform-provider-azurerm*
+
+#Ignore all files on vagrant
+.vagrant
+/venv/
+*.pyc
+__pycache__/

@@ -25,5 +25,6 @@ terraform.rc
 #Ignore all files on vagrant
 .vagrant
 /venv/
+*/venv/*
 *.pyc
 __pycache__/

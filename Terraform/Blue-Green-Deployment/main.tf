@@ -68,7 +68,7 @@ resource "aws_lb" "app" {
 }
 
 resource "aws_lb_listener" "app" {
-  ## ...
+  load_balancer_arn = aws_lb.app.arn
   default_action {
     type = "forward"
     forward {

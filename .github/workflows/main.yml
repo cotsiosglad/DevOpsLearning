@@ -10,11 +10,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4.1.1
-      with:
-        ref: AzureNetworkTesting
-
     - name: Jinja2 Syntax Check
       uses: cotsiosglad/Jinja2SyntaxChecker@v1.0.1
       with:

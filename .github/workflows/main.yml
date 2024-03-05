@@ -10,13 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Clear Cache
-      uses: TheRealRyGuy/clear-cache-action@v0.1      
-      
     - name: Checkout
       uses: actions/checkout@v4.1.1
       with:
-        ref: main
+        ref: AzureNetworkTesting
           
     - name: Check Path
       run: |

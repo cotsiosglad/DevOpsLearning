@@ -14,8 +14,9 @@ jobs:
       uses: actions/checkout@v4.1.1
       with:
         ref: AzureNetworkTesting
-          
-    - name: Check Path
-      run: |
-        ls -la
-        cat requirements.txt
+
+    - name: Jinja2 Syntax Check
+      uses: cotsiosglad/Jinja2SyntaxChecker@v1.0.1
+      with:
+        directory: ./
+        

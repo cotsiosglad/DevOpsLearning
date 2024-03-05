@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - AzureNetworkTesting
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Jinja2 Syntax Check
+      # You may pin to the exact commit or the version.
+      # uses: cotsiosglad/Jinja2SyntaxChecker@2224aa51b1a33d0eb263c94af7989db37c82a4da
+      uses: cotsiosglad/Jinja2SyntaxChecker@v1.0.0
+      with:
+        # Path of the folder/file containing .j2 files
+        directory: ./

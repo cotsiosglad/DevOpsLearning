@@ -20,7 +20,8 @@ jobs:
         ls -la
 
     - name: Jinja2 Syntax Check
-      uses: cotsiosglad/Jinja2SyntaxChecker@v1.0.2
+      uses: cotsiosglad/Jinja2SyntaxChecker@test
       with:
-        directory: testTemplate.j2
+        directory: .
+          
         

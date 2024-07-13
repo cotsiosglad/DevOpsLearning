@@ -16,9 +16,13 @@ jobs:
     - name: Checkout Repo    
       uses: actions/checkout@v4
 
-    - name: Check directory
-      run : ll
-      
+    # Debug step: Print the current directory
+    - name: Print current directory
+      run: pwd
+
+    # Debug step: List files in the current directory
+    - name: List files
+      run: ls -la
     # - name: Set up Docker Buildx
     #   uses: docker/setup-buildx-action@v3
     

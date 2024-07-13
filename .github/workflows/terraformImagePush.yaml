@@ -35,16 +35,17 @@ jobs:
     - name: Change to Terraform directory
       run: cd Terraform
 
-    # Debug step: Print the current directory
-    - name: Print current directory
-      run: pwd
+    # # Debug step: Print the current directory
+    # - name: Print current directory
+    #   run: pwd
 
-    # Debug step: List files in the current directory
-    - name: List files
-      run: ls -la
+    # # Debug step: List files in the current directory
+    # - name: List files
+    #   run: ls -la
 
-    # - name: Build and push
-    #   uses: docker/build-push-action@v6
-    #   with:
-    #     push: true
-    #     tags: ${{ secrets.DOCKERHUB_REPO }}:${{ env.VERSION_TAG }}
+    - name: Build and push
+      uses: docker/build-push-action@v6
+      with:
+        context: Terraform
+        push: true
+        tags: ${{ secrets.DOCKERHUB_REPO }}:${{ env.VERSION_TAG }}

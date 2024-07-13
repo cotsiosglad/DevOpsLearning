@@ -16,17 +16,6 @@ jobs:
     - name: Checkout Repo    
       uses: actions/checkout@v4
 
-    # Debug step: Print the current directory
-    - name: Print current directory
-      run: pwd
-
-    # Debug step: List files in the current directory
-    - name: List files
-      run: ls -la
-
-    - name: Change to Terraform directory
-      run: cd Terraform
-
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
     
@@ -42,6 +31,9 @@ jobs:
         SHORT_SHA=$(echo "${GITHUB_SHA}" | cut -c1-7)
         DATE=$(date +'%Y%m%d')
         echo "VERSION_TAG=${DATE}-${SHORT_SHA}" >> $GITHUB_ENV
+
+    - name: Change to Terraform directory
+      run: cd Terraform
 
     # Debug step: Print the current directory
     - name: Print current directory

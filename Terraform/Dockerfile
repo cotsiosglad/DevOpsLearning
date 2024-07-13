@@ -4,10 +4,11 @@ FROM oraclelinux:9-slim
 ENV TERRAFORM_VERSION=1.9.2
 
 # Install required packages and Terraform
-RUN yum install -y yum-utils \
-    && yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo \
-    && yum install -y terraform-${TERRAFORM_VERSION} \
-    && yum clean all
+RUN microdnf install -y yum-utils \
+    && microdnf install -y dnf \
+    && dnf config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo \
+    && microdnf install -y terraform-${TERRAFORM_VERSION} \
+    && microdnf clean all
 
 WORKDIR /app
 
@@ -15,4 +16,4 @@ COPY . /app
 
 RUN chmod +x /app/*.sh
 
-CMD ["terraform", "version"]
+ENTRYPOINT [ "terraform" ]

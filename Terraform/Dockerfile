@@ -14,6 +14,4 @@ WORKDIR /app
 
 COPY . /app
 
-RUN chmod +x /app/*.sh
-
 ENTRYPOINT [ "terraform" ]

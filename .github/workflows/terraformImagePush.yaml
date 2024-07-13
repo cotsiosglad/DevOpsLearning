@@ -43,8 +43,16 @@ jobs:
         DATE=$(date +'%Y%m%d')
         echo "VERSION_TAG=${DATE}-${SHORT_SHA}" >> $GITHUB_ENV
 
-    - name: Build and push
-      uses: docker/build-push-action@v6
-      with:
-        push: true
-        tags: ${{ secrets.DOCKERHUB_REPO }}:${{ env.VERSION_TAG }}
+    # Debug step: Print the current directory
+    - name: Print current directory
+      run: pwd
+
+    # Debug step: List files in the current directory
+    - name: List files
+      run: ls -la
+
+    # - name: Build and push
+    #   uses: docker/build-push-action@v6
+    #   with:
+    #     push: true
+    #     tags: ${{ secrets.DOCKERHUB_REPO }}:${{ env.VERSION_TAG }}
